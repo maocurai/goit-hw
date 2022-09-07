@@ -1,9 +1,11 @@
 package org.example.quad;
 
-public class Parallelogram extends Quadrilaterals{
+public class Parallelogram extends Quadrilaterals {
+
+  private static final String NAME = "Parallelogram";
 
   @Override
-  public void printName() {
-    System.out.println("Parallelogram");
+  public String getName() {
+    return NAME;
   }
 }

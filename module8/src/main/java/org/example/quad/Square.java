@@ -1,9 +1,11 @@
 package org.example.quad;
 
-public class Square extends Rectangle{
+public class Square extends Rectangle {
+
+  private static final String NAME = "Square";
 
   @Override
-  public void printName() {
-    System.out.println("Square");
+  public String getName() {
+    return NAME;
   }
 }

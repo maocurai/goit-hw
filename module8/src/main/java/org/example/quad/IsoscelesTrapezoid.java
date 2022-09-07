@@ -1,9 +1,12 @@
 package org.example.quad;
 
-public class IsoscelesTrapezoid extends Trapezoid{
+public class IsoscelesTrapezoid extends Trapezoid {
+
+  private static final String NAME = "Isosceles trapezoid";
 
   @Override
-  public void printName() {
-    System.out.println("Isosceles trapezoid");
+  public String getName() {
+    return NAME;
   }
+
 }
