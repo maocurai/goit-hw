@@ -125,10 +125,10 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
   @Setter
   private static class Node<K, V> {
 
-    private K key;
-    private V value;
-    private int hashCode;
-    private Node<K, V> next = null;
+    K key;
+    V value;
+    int hashCode;
+    Node<K, V> next = null;
 
     public Node(K key, V value, int hashCode) {
       this.key = key;

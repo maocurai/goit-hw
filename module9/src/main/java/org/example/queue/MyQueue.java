@@ -12,20 +12,14 @@ public class MyQueue<T> implements MyCollection<T> {
 
   private int head = 0;
 
-  public <T> MyQueue() {
+  public MyQueue() {
     data = new Object[DEFAULT_CAPACITY];
-  }
-
-
-  private <T> MyQueue(Object[] arr) {
-    size = arr.length;
-    data = Arrays.copyOf(arr, arr.length);
   }
 
   /**
    * Checks if the number of elements less than index position.
    * @param index position
-   * @return
+   * @return true if index doesn't bound
    */
   private boolean checkElementIndex(int index) {
     return (index < size && index >= 0);

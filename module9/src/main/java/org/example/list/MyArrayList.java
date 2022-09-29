@@ -12,23 +12,18 @@ public class MyArrayList<T> implements MyList<T> {
 
   private int size = 0;
 
-  public <T> MyArrayList() {
+  public MyArrayList() {
     data = new Object[DEFAULT_CAPACITY];
   }
 
-  public <T> MyArrayList(int capacity) {
+  public MyArrayList(int capacity) {
     data = new Object[capacity];
-  }
-
-  private <T> MyArrayList(Object[] arr) {
-    size = arr.length;
-    data = Arrays.copyOf(arr, arr.length);
   }
 
   /**
    * Checks if the number of elements less than index position.
    * @param index position
-   * @return
+   * @return true if index bound
    */
   private boolean checkElementIndex(int index) {
     return (index < size && index >= 0);
@@ -49,7 +44,7 @@ public class MyArrayList<T> implements MyList<T> {
    */
   public void add(T o) {
     if (size < data.length) {
-      data[size] = (T) o;
+      data[size] = o;
       ++size;
     } else {
       grow();
@@ -99,7 +94,7 @@ public class MyArrayList<T> implements MyList<T> {
 
   /**
    * Returns number of elements in list.
-   * @return
+   * @return number of elements in list
    */
   public int size() {
     return size;

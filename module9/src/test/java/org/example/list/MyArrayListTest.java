@@ -112,13 +112,6 @@ class MyArrayListTest {
   }
 
   @Test
-  void equalListsByReferenceEqualsTest() {
-    MyArrayList<Integer> list1 = new MyArrayList<>();
-    MyArrayList<Integer> list2 = list1;
-    Assertions.assertTrue(list1.equals(list2) && list2.equals(list1));
-  }
-
-  @Test
   void equalListsWithRemovedElementsEqualsTest() {
     MyArrayList<Integer> list1 = new MyArrayList<>();
     MyArrayList<Integer> list2 = new MyArrayList<>();
@@ -136,14 +129,14 @@ class MyArrayListTest {
       list1.add(x);
       list2.add(x);
     });
-    Assertions.assertTrue(list1.hashCode() == list2.hashCode());
+    Assertions.assertEquals(list1.hashCode(), list2.hashCode());
   }
 
   @Test
   void reflexiveEqualsTest() {
     MyArrayList<Integer> list = new MyArrayList<>();
     IntStream.rangeClosed(1, 5).forEach(list::add);
-    Assertions.assertTrue(list.equals(list));
+    Assertions.assertEquals(list, list);
   }
 
   @Test
@@ -164,7 +157,7 @@ class MyArrayListTest {
   void nullEqualsTest() {
     MyArrayList<Integer> list = new MyArrayList<>();
     IntStream.rangeClosed(1, 5).forEach(list::add);
-    Assertions.assertFalse(list.equals(null));
+    Assertions.assertNotEquals(list, null);
   }
 
 }

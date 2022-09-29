@@ -82,16 +82,13 @@ class MyStackTest {
     MyStack<Integer> stack = new MyStack<>();
     stack.push(0);
     stack.pop();
-    Assertions.assertThrows(IndexOutOfBoundsException.class, () -> stack.peek());
+    Assertions.assertThrows(IndexOutOfBoundsException.class, stack::peek);
   }
 
   @Test
   void popFromEmptyStackTest() {
     MyStack<Integer> stack = new MyStack<>();
-    IntStream.rangeClosed(0, 5).forEach(stack::push);
-    Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
-      IntStream.rangeClosed(0, 6).forEach(x -> stack.pop());
-    });
+    Assertions.assertThrows(IndexOutOfBoundsException.class, stack::pop);
   }
 
   @Test

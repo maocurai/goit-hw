@@ -8,7 +8,7 @@ class MyHashMapTest {
 
   @Test
   void putTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     IntStream.rangeClosed(0, 3).forEach(x -> map.put(x, String.valueOf(x)));
     IntStream.rangeClosed(0, 3)
         .forEach(x -> Assertions.assertEquals(String.valueOf(x), map.get(x)));
@@ -16,7 +16,7 @@ class MyHashMapTest {
 
   @Test
   void putRepeatingKeyTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     map.put(1, "Hello");
     map.put(1, "Bye");
     Assertions.assertEquals("Bye", map.get(1));
@@ -24,7 +24,7 @@ class MyHashMapTest {
 
   @Test
   void repeatingKeySizeTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     map.put(1, "Hello");
     map.put(1, "Bye");
     Assertions.assertEquals(1, map.size());
@@ -32,23 +32,23 @@ class MyHashMapTest {
 
   @Test
   void removePairsSizeTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     IntStream.rangeClosed(0, 3).forEach(x -> map.put(x, String.valueOf(x)));
-    IntStream.rangeClosed(0, 3).forEach(x -> map.remove(x));
+    IntStream.rangeClosed(0, 3).forEach(map::remove);
     Assertions.assertEquals(0, map.size());
   }
 
   @Test
   void removeTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     IntStream.rangeClosed(0, 3).forEach(x -> map.put(x, String.valueOf(x)));
-    IntStream.rangeClosed(0, 3).forEach(x -> map.remove(x));
+    IntStream.rangeClosed(0, 3).forEach(map::remove);
     IntStream.rangeClosed(0, 3).forEach(x -> Assertions.assertNull(map.get(x)));
   }
 
   @Test
   void removeReturnValueTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     IntStream.rangeClosed(0, 3).forEach(x -> map.put(x, String.valueOf(x)));
     IntStream.rangeClosed(0, 3)
         .forEach(x -> Assertions.assertEquals(String.valueOf(x), map.remove(x)));
@@ -56,21 +56,21 @@ class MyHashMapTest {
 
   @Test
   void removePairByNotExistingKeyTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     IntStream.rangeClosed(0, 3).forEach(x -> map.put(x, String.valueOf(x)));
     Assertions.assertNull(map.remove(100));
   }
 
   @Test
   void getValueByNotExistingKeyTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     IntStream.rangeClosed(0, 3).forEach(x -> map.put(x, String.valueOf(x)));
     Assertions.assertNull(map.get(100));
   }
 
   @Test
   void getValueByRemovedKeyTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     map.put(1, "Value");
     map.remove(1);
     Assertions.assertNull(map.get(1));
@@ -78,7 +78,7 @@ class MyHashMapTest {
 
   @Test
   void sizeAfterClearTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     IntStream.rangeClosed(0, 3).forEach(x -> map.put(x, String.valueOf(x)));
     map.clear();
     Assertions.assertEquals(0, map.size());
@@ -86,7 +86,7 @@ class MyHashMapTest {
 
   @Test
   void getValueAfterClearTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     IntStream.rangeClosed(0, 3).forEach(x -> map.put(x, String.valueOf(x)));
     map.clear();
     IntStream.rangeClosed(0, 3).forEach(x -> Assertions.assertNull(map.get(x)));
@@ -94,14 +94,14 @@ class MyHashMapTest {
 
   @Test
   void growingSizeTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     IntStream.rangeClosed(0, 100).forEach(x -> map.put(x, String.valueOf(x)));
     Assertions.assertEquals(101, map.size());
   }
 
   @Test
   void gettingValuesAfterGrowingTest() {
-    MyHashMap<Integer, String> map = new MyHashMap();
+    MyHashMap<Integer, String> map = new MyHashMap<>();
     map.put(-1, "Hi");
     IntStream.rangeClosed(0, 100).forEach(x -> map.put(x, String.valueOf(x)));
     Assertions.assertEquals("Hi", map.get(-1));

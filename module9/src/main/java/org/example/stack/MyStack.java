@@ -11,23 +11,18 @@ public class MyStack<T>  {
 
   private int size = 0;
 
-  public <T> MyStack() {
+  public MyStack() {
     data = new Object[DEFAULT_CAPACITY];
   }
 
-  public <T> MyStack(int capacity) {
+  public MyStack(int capacity) {
     data = new Object[capacity];
-  }
-
-  private <T> MyStack(Object[] arr) {
-    size = arr.length;
-    data = Arrays.copyOf(arr, arr.length);
   }
 
   /**
    * Checks if the number of elements less than index position.
    * @param index position
-   * @return
+   * @return true if index bound
    */
   private boolean checkElementIndex(int index) {
     return (index < size && index >= 0);
@@ -48,7 +43,7 @@ public class MyStack<T>  {
    */
   public T push(T o) {
     if (size < data.length) {
-      data[size] = (T) o;
+      data[size] = o;
       ++size;
     } else {
       grow();
